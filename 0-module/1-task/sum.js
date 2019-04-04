@@ -4,7 +4,7 @@ function sum(a, b) {
   ) {
     return a+b;
   }
-  throw new TypeError('Arguments is not a number');
+  throw new TypeError('Arguments is not a numbers');
 }
 
 module.exports = sum;
