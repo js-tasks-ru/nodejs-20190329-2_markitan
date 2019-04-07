@@ -1,0 +1,11 @@
+{
+  "extends": ["eslint:recommended", "google"],
+  "rules": {
+    "require-jsdoc" : 0
+    // Additional, per-project rules...
+  },
+  "env": {
+    "node": true,
+    "es6": true
+  }
+}
