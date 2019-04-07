@@ -6,10 +6,19 @@ class LineSplitStream extends stream.Transform {
     super(options);
   }
   
-  _transform(chunk, encoding, callback) {
+  _transform(chunk, encoding, next) {
+    const lines = ((this.soFar != null ? this.soFar : "") + chunk.toString()).split(os.EOL);
+    this.soFar = lines.pop();
+    
+    for (const line of lines){
+      this.push(line);
+    }
+    next();
   }
   
-  _flush(callback) {
+  _flush(done) {
+    this.push(this.soFar != null ? this.soFar:"");
+    done();
   }
 }
 
